@@ -22,9 +22,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('apps.main.urls', namespace='main')),
     path('blog/', include('apps.blog.urls', namespace='blog')),
-    path('main/', include('main.urls', namespace='main')),
-    path('resume/', include('resume.urls', namespace='resume')),
+    path('resume/', include('apps.resume.urls', namespace='resume')),
 ]
 
 if settings.DEBUG:

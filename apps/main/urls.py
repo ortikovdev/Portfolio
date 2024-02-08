@@ -1,4 +1,4 @@
-app_name = 'blog'
+app_name = 'main'
 
 urlpatterns = [
 
