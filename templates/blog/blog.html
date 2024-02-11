@@ -1,10 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-<script nonce="22fcd50d-97c1-4ac6-b688-9c3aa403f779">try{(function(w,d){!function(bu,bv,bw,bx){bu[bw]=bu[bw]||{};bu[bw].executed=[];bu.zaraz={deferred:[],listeners:[]};bu.zaraz.q=[];bu.zaraz._f=function(by){return async function(){var bz=Array.prototype.slice.call(arguments);bu.zaraz.q.push({m:by,a:bz})}};for(const bA of["track","set","debug"])bu.zaraz[bA]=bu.zaraz._f(bA);bu.zaraz.init=()=>{var bB=bv.getElementsByTagName(bx)[0],bC=bv.createElement(bx),bD=bv.getElementsByTagName("title")[0];bD&&(bu[bw].t=bv.getElementsByTagName("title")[0].text);bu[bw].x=Math.random();bu[bw].w=bu.screen.width;bu[bw].h=bu.screen.height;bu[bw].j=bu.innerHeight;bu[bw].e=bu.innerWidth;bu[bw].l=bu.location.href;bu[bw].r=bv.referrer;bu[bw].k=bu.screen.colorDepth;bu[bw].n=bv.characterSet;bu[bw].o=(new Date).getTimezoneOffset();if(bu.dataLayer)for(const bH of Object.entries(Object.entries(dataLayer).reduce(((bI,bJ)=>({...bI[1],...bJ[1]})),{})))zaraz.set(bH[0],bH[1],{scope:"page"});bu[bw].q=[];for(;bu.zaraz.q.length;){const bK=bu.zaraz.q.shift();bu[bw].q.push(bK)}bC.defer=!0;for(const bL of[localStorage,sessionStorage])Object.keys(bL||{}).filter((bN=>bN.startsWith("_zaraz_"))).forEach((bM=>{try{bu[bw]["z_"+bM.slice(7)]=JSON.parse(bL.getItem(bM))}catch{bu[bw]["z_"+bM.slice(7)]=bL.getItem(bM)}}));bC.referrerPolicy="origin";bC.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(bu[bw])));bB.parentNode.insertBefore(bC,bB)};["complete","interactive"].includes(bv.readyState)?zaraz.init():bu.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document)}catch(e){throw fetch("/cdn-cgi/zaraz/t"),e;};</script></head><body>
-<h1>Not Found</h1>
-<p>The requested URL was not found on this server.</p>
-<hr>
-<address>Apache/2.4.41 (Ubuntu) Server at preview.colorlib.com Port 443</address>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"8503af14b984b45b","b":1,"version":"2024.2.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script>
-</body></html>
+{% extends 'base.html' %}
+
+{% content block %}
+
+{% endblock %}
