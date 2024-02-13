@@ -52,7 +52,7 @@ class Comment(models.Model):
         if not self.parent:
             return self.Comment.objects.filter(top_level_comment_id=self.id)
         return None
-
+    #
     # def get_image(self):
     #     if self.image:
     #         return mark_safe(f"<a href="{self.image.url} target="_blank"><img src="{self.image.url} width=50 height=50"/></a>")

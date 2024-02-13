@@ -3,6 +3,53 @@
 
 {% block content %}
 
+    <style>
+        #django-messages div[class^=message] {
+            width: 100%;
+            padding: 40px 15px;
+            border-radius: 8px;
+            border: 2px solid;
+            color: #fff;
+            font-weight: 700;
+            line-height: 18px;
+            z-index: 999;
+        }
+
+        #django-messages {
+            position: sticky !important;
+            z-index: 4;
+            overflow: hidden;
+        }
+
+        #django-messages .message-success {
+            background-color: forestgreen;
+            border-color: darkgreen;
+        }
+
+        #django-messages .message-error {
+            background-color: red;
+            border-color: darkred;
+        }
+
+        .hide {
+            animation-name: hide_slide_show;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes hide_slide_show {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+        }
+    </style>
+
+
 <section class="hero-wrap js-fullheight">
     <div class="overlay"></div>
     <div class="container">
@@ -13,7 +60,7 @@
                     <h1>Anvar Ortikov</h1>
                     <h2>I'm a
                         <span class="txt-rotate" data-period="2000"
-                              data-rotate="[ &quot;Web Designer.&quot;, &quot;Developer.&quot;, &quot;Photographer.&quot;, &quot;Marketer.&quot;, &quot;Blogger&quot; ]"></span>
+                              data-rotate="[ &quot;Software engineer&quot;, &quot;Programmer&quot;, &quot;Backend developer&quot;, &quot;Coder&quot;]"></span>
                     </h2>
                 </div>
             </div>
@@ -34,8 +81,12 @@
                 <div class="img-about img d-flex align-items-stretch">
                     <div class="overlay"></div>
                     <div class="img d-flex align-self-stretch align-items-center"
+<<<<<<< HEAD
                          style="background-image:url(../../static/images/about.jpg);">
                         <img src="{% static 'images/about.jpg' %}" alt="">
+=======
+                            style="background-image:url({% static 'images/about.jpg' %});">
+>>>>>>> origin/main
                     </div>
                 </div>
             </div>
@@ -47,7 +98,7 @@
                         <p>A small river named Duden flows by their place and supplies it with the necessary
                             regelialia.</p>
                         <ul class="about-info mt-4 px-md-0 px-2">
-                            <li class="d-flex"><span>Name:</span> <span>Ronaldo Fredrickson</span></li>
+                            <li class="d-flex"><span>Name:</span> <span>Anvar Ortikov</span></li>
                             <li class="d-flex"><span>Date of birth:</span> <span>November 28, 1989</span></li>
                             <li class="d-flex"><span>Address:</span> <span>San Francisco CA 97987 USA</span></li>
                             <li class="d-flex"><span>Zip code:</span> <span>1000</span></li>
@@ -55,7 +106,7 @@
                                     href="https://preview.colorlib.com/cdn-cgi/l/email-protection" class="__cf_email__"
                                     data-cfemail="d1a3bebfb0bdb5be91b6bcb0b8bdffb2bebc">[email&#160;protected]</a></span>
                             </li>
-                            <li class="d-flex"><span>Phone: </span> <span>+1-2234-5678-9-0</span></li>
+                            <li class="d-flex"><span>Phone: </span> <span>+998(94) 404-77-54</span></li>
                         </ul>
                     </div>
                 </div>
@@ -76,23 +127,23 @@
     <div class="container">
         <div class="row">
             <div class="col-sm ftco-animate">
-                <a href="#" class="partner"><img src="images/partner-1.png" class="img-fluid"
+                <a href="#" class="partner"><img src="{% static 'images/partner-1.png' %}" class="img-fluid"
                                                  alt="Colorlib Template"></a>
             </div>
             <div class="col-sm ftco-animate">
-                <a href="#" class="partner"><img src="images/partner-2.png" class="img-fluid"
+                <a href="#" class="partner"><img src="{% static 'images/partner-2.png' %}" class="img-fluid"
                                                  alt="Colorlib Template"></a>
             </div>
             <div class="col-sm ftco-animate">
-                <a href="#" class="partner"><img src="images/partner-3.png" class="img-fluid"
+                <a href="#" class="partner"><img src="{% static 'images/partner-3.png' %}" class="img-fluid"
                                                  alt="Colorlib Template"></a>
             </div>
             <div class="col-sm ftco-animate">
-                <a href="#" class="partner"><img src="images/partner-4.png" class="img-fluid"
+                <a href="#" class="partner"><img src="{% static 'images/partner-4.png' %}" class="img-fluid"
                                                  alt="Colorlib Template"></a>
             </div>
             <div class="col-sm ftco-animate">
-                <a href="#" class="partner"><img src="images/partner-5.png" class="img-fluid"
+                <a href="#" class="partner"><img src="{% static 'images/partner-5.png' %}" class="img-fluid"
                                                  alt="Colorlib Template"></a>
             </div>
         </div>
@@ -567,7 +618,7 @@
         <div class="row no-gutters">
             <div class="col-md-4">
                 <div class="project img ftco-animate d-flex justify-content-center align-items-center"
-                     style="background-image: url(../../static/images/work-1.jpg);">
+                     style="background-image: url({% static 'images/work-1.jpg' %});">
                     <div class="overlay"></div>
                     <div class="text text-center p-4">
                         <h3><a href="#">Branding &amp; Illustration Design</a></h3>
@@ -577,7 +628,7 @@
             </div>
             <div class="col-md-4">
                 <div class="project img ftco-animate d-flex justify-content-center align-items-center"
-                     style="background-image: url(../../static/images/work-2.jpg);">
+                     style="background-image: url({% static 'images/work-2.jpg' %});">
                     <div class="overlay"></div>
                     <div class="text text-center p-4">
                         <h3><a href="#">Branding &amp; Illustration Design</a></h3>
@@ -587,7 +638,7 @@
             </div>
             <div class="col-md-4">
                 <div class="project img ftco-animate d-flex justify-content-center align-items-center"
-                     style="background-image: url(../../static/images/work-3.jpg);">
+                     style="background-image: url({% static 'images/work-3.jpg' %});">
                     <div class="overlay"></div>
                     <div class="text text-center p-4">
                         <h3><a href="#">Branding &amp; Illustration Design</a></h3>
@@ -597,7 +648,7 @@
             </div>
             <div class="col-md-4">
                 <div class="project img ftco-animate d-flex justify-content-center align-items-center"
-                     style="background-image: url(../../static/images/work-4.jpg);">
+                     style="background-image: url({% static 'images/work-4.jpg' %});">
                     <div class="overlay"></div>
                     <div class="text text-center p-4">
                         <h3><a href="#">Branding &amp; Illustration Design</a></h3>
@@ -617,7 +668,7 @@
             </div>
             <div class="col-md-4">
                 <div class="project img ftco-animate d-flex justify-content-center align-items-center"
-                     style="background-image: url(../../static/images/work-6.jpg);">
+                     style="background-image: url({% static 'images/work-6.jpg' %});">
                     <div class="overlay"></div>
                     <div class="text text-center p-4">
                         <h3><a href="#">Branding &amp; Illustration Design</a></h3>
@@ -699,7 +750,7 @@
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
                     <a href="../blog/single.html" class="block-20"
-                       style="background-image: url('../../static/images/image_2.jpg');">
+                       style="background-image: url({% static 'images/image_2.jpg' %});">
                     </a>
                     <div class="text mt-3 float-right d-block">
                         <h3 class="heading"><a href="../blog/single.html">Why Lead Generation is Key for Business
@@ -719,7 +770,7 @@
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry">
                     <a href="../blog/single.html" class="block-20"
-                       style="background-image: url('../../static/images/image_3.jpg');">
+                       style="background-image: url({% static 'images/image_3.jpg' %});">
                     </a>
                     <div class="text mt-3 float-right d-block">
                         <h3 class="heading"><a href="../blog/single.html">Why Lead Generation is Key for Business
@@ -739,7 +790,7 @@
         </div>
     </div>
 </section>
-<section class="ftco-section ftco-hireme img" style="background-image: url(../../static/images/bg_1.jpg)">
+<section class="ftco-section ftco-hireme img" style="background-image: url({% static 'images/bg_1.jpg' %})">
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
@@ -830,7 +881,7 @@
                 </form>
             </div>
             <div class="col-md-6 d-flex">
-                <div class="img" style="background-image: url(../../static/images/about.jpg);"></div>
+                <div class="img" style="background-image: url({% static 'images/about.jpg' %});"></div>
             </div>
         </div>
     </div>
