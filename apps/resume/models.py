@@ -8,7 +8,7 @@ from django.utils import timezone
 
 class Skill(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    persentage = models.IntegerField(max_length=255, blank=True, null=True)
+    persentage = models.IntegerField(blank=True, null=True)
     image = models.ImageField(upload_to='main/skills/', blank=True, null=True)
 
     def __str__(self):
