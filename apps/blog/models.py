@@ -37,7 +37,7 @@ class Blog(models.Model):
 
 
 class Comment(models.Model):
-    # blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
     parent = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True)
     top_level_comment_id = models.IntegerField(null=True, blank=True)
     name = models.CharField(max_length=255)
@@ -60,7 +60,7 @@ class Comment(models.Model):
 
     def blog_pre_save(sender, instance, *args, **kwargs):
         if not instance.slug:
-            instance.slug = slugify(instance.title + "-" + instance.created_date.strftime("%Y%m"))
+            instance.slug = slugify(instance.title + "-" + str(timezone.now().strftime("%Y%m%d-%H")))
 
     pre_save.connect(blog_pre_save, sender=Blog)
 
