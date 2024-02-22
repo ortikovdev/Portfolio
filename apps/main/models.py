@@ -9,6 +9,7 @@ from django.utils import timezone
 class About(models.Model):
     name = models.CharField(max_length=255)
     surname = models.CharField(max_length=255)
+    image = models.ImageField(null=True, blank=True)
     job_title = models.CharField(max_length=255, blank=True, null=True)
     date_of_birth = models.DateField()
     about = RichTextField()
