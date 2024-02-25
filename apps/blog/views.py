@@ -17,3 +17,4 @@ def blog_detail(request, slug):
     }
     return render(request, 'blog/single.html', ctx)
 
+
