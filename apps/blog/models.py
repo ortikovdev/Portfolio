@@ -23,7 +23,7 @@ class Tag(models.Model):
         return self.title
 
 
-class Blog(models.Model):
+class Article(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     image = models.ImageField(upload_to='static/')
@@ -36,39 +36,52 @@ class Blog(models.Model):
         return self.title
 
 
+class SubArticle(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='subarticles')
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='static/')
+    upper_text = RichTextField()
+    bottom_text = RichTextField()
+
+
 class Comment(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
-    parent = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True)
+    blog = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True, related_name='parents')
     top_level_comment_id = models.IntegerField(null=True, blank=True)
     name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='static/', null=True, blank=True)
+    image = models.ImageField(upload_to='article/comments', null=True, blank=True)
     message = models.TextField(max_length=255)
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
+    @property
     def children(self):
         if not self.parent:
-            return self.Comment.objects.filter(top_level_comment_id=self.id)
+            return Comment.objects.filter(top_level_comment_id=self.id)
         return None
-    #
+
     # def get_image(self):
     #     if self.image:
-    #         return mark_safe(f"<a href="{self.image.url} target="_blank"><img src="{self.image.url} width=50 height=50"/></a>")
+    #         return mark_safe(f"<a href={self.image.url} target='_blank'><img src={self.image.url} width=50 height=50"/></a>")
     #     return "-"
 
-    def blog_pre_save(sender, instance, *args, **kwargs):
-        if not instance.slug:
-            instance.slug = slugify(instance.title + "-" + str(timezone.now().strftime("%Y%m%d-%H")))
 
-    pre_save.connect(blog_pre_save, sender=Blog)
+def article_pre_save(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.title + "-" + str(timezone.now().strftime("%Y%m%d-%H")))
 
-    def comment_pre_save(sender, instance, *args, **kwargs):
-        if instance.parent:
-            if instance.parent.top_level_comment_id:
-                instance.top_level_comment_id = instance.parent.top_level_comment_id
-            else:
-                instance.top_level_comment_id = instance.parent.top_level_comment_id
 
-    # pre_save.connect(comment_pre_save, sender=Comment)
+# pre_save.connect(article_pre_save, sender=Article)
+
+
+def comment_pre_save(sender, instance, *args, **kwargs):
+    if instance.parent:
+        if instance.parent.top_level_comment_id:
+            instance.top_level_comment_id = instance.parent.top_level_comment_id
+        else:
+            instance.top_level_comment_id = instance.parent.id
+
+
+pre_save.connect(comment_pre_save, sender=Comment)

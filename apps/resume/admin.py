@@ -3,12 +3,16 @@ from .models import (
     Skill,
     Education,
     Experience,
-    Awards,
-    Cervices,
+    Award,
+    Services,
+    Projects,
+    Numbers,
 )
 
 admin.site.register(Skill)
 admin.site.register(Education)
 admin.site.register(Experience)
-admin.site.register(Awards)
-admin.site.register(Cervices)
+admin.site.register(Award)
+admin.site.register(Services)
+admin.site.register(Projects)
+admin.site.register(Numbers)

@@ -6,62 +6,74 @@ from django.db.models.signals import pre_save, post_save
 from django.utils import timezone
 
 
-class Skill(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    persentage = models.IntegerField(blank=True, null=True)
-    image = models.ImageField(upload_to='main/skills/', blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
-
 class Education(models.Model):
-    studied_at = models.CharField(max_length=255, blank=True, null=True)
-    direction = models.CharField(max_length=322, blank=True, null=True)
-    starting_date = models.DateField(null=True, blank=True)
-    ending_date = models.DateField(null=True, blank=True)
-    description = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return self.studied_at
+    school_name = models.CharField(max_length=255)
+    years = models.CharField(max_length=10)
+    direction = models.CharField(max_length=255)
+    description = models.TextField()
+    created_date = models.DateField(auto_now_add=True)
 
 
 class Experience(models.Model):
-    job_title = models.CharField(max_length=256, blank=True, null=True)
-    worked_at = models.CharField(max_length=322, blank=True, null=True)
-    starting_date = models.DateField(null=True, blank=True)
-    ending_date = models.DateField(null=True, blank=True)
-    description = models.TextField(blank=True, null=True)
+    company_name = models.CharField(max_length=255)
+    years = models.CharField(max_length=10)
+    job_name = models.CharField(max_length=255)
+    description = models.TextField()
+    created_date = models.DateField(auto_now_add=True)
+
+
+class Award(models.Model):
+    award_name = models.CharField(max_length=255)
+    years = models.CharField(max_length=10)
+    where = models.CharField(max_length=255)
+    description = models.TextField()
+    created_date = models.DateField(auto_now_add=True)
+
+
+class Skill(models.Model):
+    title = models.CharField(max_length=255)
+    percent = models.IntegerField()
+    last_week = models.IntegerField()
+    last_year = models.IntegerField()
+    created_date = models.DateField(auto_now_add=True)
+    modified_date = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.job_title
+        return self.title
 
 
-class Awards(models.Model):
-    name = models.CharField(max_length=254, blank=True, null=True)
-    where_is_it = models.CharField(max_length=322, blank=True, null=True)
-    when_was_it = models.DateField(null=True, blank=True)
-    description = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Cervices(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='main/services/', blank=True, null=True)
+class Services(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    link = models.URLField(max_length=255)
+    icon = models.ImageField(upload_to='icons/')
+    created_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
-class OurProjects(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    description = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(upload_to='main/projects/', blank=True, null=True)
-    link = models.URLField(blank=True, null=True)
-    projects_number = models.CharField(max_length=255, blank=True, null=True)
+class Projects(models.Model):
+    title = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='projects/')
+    link = models.URLField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Projects'
+
+
+class Numbers(models.Model):
+    title = models.CharField(max_length=255)
+    number = models.IntegerField()
+    created_date = models.DateField(auto_now_add=True)
+    modified_date = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Numbers'
